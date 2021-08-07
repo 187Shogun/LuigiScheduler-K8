@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "analytics-and-insights-311921",
+  "private_key_id": "ecbb18587dd52e589138507b44d992b90695fd20",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCJY27mL12ei7ZG\nUslFDkzl0QciVRccWHM4VjMjV/2SKb2MyFYjEbc7n49u+NksiaBNsLht6aOK6FJl\nYeiXEOY8VNNww9LJSbp8BhrxHosoWnZkvOr/pO7JeXYpatsNNWFZp77UBgkqqRjm\nNVIaOLw2QFS33ttz7Lbs9elbrMMOwP2xHtoyMSzt19OglYodtFk7q9uWgdihrwyo\nsEDvP2eDbL0zrBhXfDsqIlm3DwuUoOu4E0iyK+LZK7UNHBkKGoYN2O6o8jpvDUGd\nflGG/jsjwMoOHIfDqCfQdd2TfkrCgOxjusnIVuwJBAvhlZqHvvNkFHgRBdfHQPqi\ng3+XGhCBAgMBAAECggEAHx8QiIDzPo5cYEqxf/yQy8BRUuQeg5O/qePQ2rE8Zech\nomnhJTmGnbFzvsoM++tDDkY5SOCTZMximceXddzkoob+jH03WtRiM2T4pmTqVd5E\nEma+/uDgHHBwpUooy7GrVzFJ52Jkoi7CzqcGbZ0reUiSSEJpyLU27K95yIP2fXlC\nJmfc3TJheMhNHEPvaEhDaghf0VsispJCT13wqQ5w6+NpGLXHeRUkt4ES2x+zBHza\nn2quJ69F8CuLM02H5bMXq64cgTzsW47LOnhYo2vFuQadtl8hKI3F/3lI/2wfaOMB\nNqUxa9YGMr0gM3mZfpoyL0rHijNQUqn2AJoLpDr+iQKBgQC9TiRrAiPFphcjQMLR\nis7beuon0kUUidxY8bakvCVV8F1PWJ4V8+awskpLXXz+4ApIXZUAJOuksswBweLO\nidFx6w43bixDZjcmqSM+1SI7T+BpvpeZeXYXGD2OyDL8bPd2vkHYAquxVl0ecN6H\nCwbBlhEoRItaJ+nD/ovYwGo/pQKBgQC5yswYIzWzTrkp5vly3CxPYvf4+PZqwWdx\n0nmxDEq030QB2BLX272EP8B+gNfpk1ovtWrLzxdCdkIeunZxxV/2zHZNQeexcg7w\nAMmfzwnJ/pWv5t3OrYqCpfh6g29mszw4ft01zOL0HwA8lv4FBj1H7epctNkDzPJo\nu+s7TGt2rQKBgDSY3pOAz7Gd2TXpS3fvClR/DUotKRZwy3FHD4kr4W/EThi6tYnB\n76nOj8fq3MzwMMs0fS7CE1r6dqZSWZMrRa9SMOwDx3aektpCClHt5An4wpB+7R4u\nWjpGeOwQAeKS4Br099RtwYiPR2Yq1BlPXfwxlujKSrGs/01+jxqVM7AlAoGANOWT\nVC/6IxH/z/lN/jDHgNa5qS4g4mYsMJDvSsQoJPUIJMpDGygZ/iQ0hw/h6UOlwr2R\nKXPNuIN48cy+2keKufaenAJul+vUauqefRxyOgt8zLcbYbOxIt9kLmVrez7+n0sn\naiDqYPzOkXGf4whSvD71oe1veBCK19zg7WIlmoUCgYB/JF9R44h6NwR6vEhcg68C\nosVFEYY+Qj9I9DCpKV3gQIHMTjY9pKytp9v0w5tSbra8o5sNpd7PU/8bzWqKcURv\nZKV/Th3/RdYPrIBtdkI1qYzgixBWadwOftKW2wI8IH7R8MBn/Trj/8DSKEvQZi2p\nkEBC/30t4vtrfTTjzz+nEw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "luigi-pipelines@analytics-and-insights-311921.iam.gserviceaccount.com",
+  "client_id": "103573323007876188020",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/luigi-pipelines%40analytics-and-insights-311921.iam.gserviceaccount.com"
+}

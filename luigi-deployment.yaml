@@ -1,0 +1,72 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: luigi-scheduler-frontend
+  labels:
+    app: luigi-scheduler-frontend
+spec:
+  type: LoadBalancer
+  selector:
+    app: luigi-scheduler
+  ports:
+  - protocol: TCP
+    port: 8082
+    targetPort: 8082
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: luigi-scheduler-backend
+  labels:
+    app: luigi-scheduler-backend
+spec:
+  selector:
+    app: luigi-scheduler
+  ports:
+  - protocol: TCP
+    port: 8082
+    targetPort: 8082
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: luigi-scheduler
+  labels:
+    app: luigi-scheduler
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: luigi-scheduler
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: luigi-scheduler
+    spec:
+      containers:
+      - name: luigi-scheduler
+        readinessProbe:
+          httpGet:
+            path: /static/visualiser/index.html
+            port: 8082
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+        resources:
+          limits:
+            cpu: 250m
+            memory: 512Mi
+        image: us-central1-docker.pkg.dev/analytics-and-insights-311921/luigi-assets/luigi-scheduler:v1.0.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8082
+        volumeMounts:
+        - name: luigi-scheduler-storage
+          mountPath: /var/lib/gce-drive
+      volumes:
+      - name: luigi-scheduler-storage
+        persistentVolumeClaim:
+          claimName: luigi-pvc
