@@ -13,10 +13,10 @@ spec:
       template:
         metadata:
           labels:
-            app: luigi-scheduler
+            app: luigi-scheduler-db-replication-worker
         spec:
           containers:
-          - name: luigi-scheduler
+          - name: luigi-scheduler-db-replication-worker
             resources:
               limits:
                 memory: 512Mi
