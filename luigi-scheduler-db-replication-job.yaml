@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: luigi-scheduler-db-replication-job
 spec:
-  schedule: "@daily"
+  schedule: "0 */8 * * *"
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 0
   failedJobsHistoryLimit: 0
