@@ -20,9 +20,8 @@ import pandas_gbq as pdgbq
 from datetime import datetime
 
 # File configurations:
-NOW = datetime.now().strftime("%Y%m%d")
+NOW = datetime.now().strftime('%Y%m%d-%H00')
 DB_LOC = '/var/lib/gce-drive/luigi-task-hist.db'
-TMP_PATH = '/var/lib/gce-drive/db-replication-checkpoints'
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'analytics-and-insights-luigi-pipelines.json'
 logging.basicConfig(
     level='INFO',
@@ -31,13 +30,13 @@ logging.basicConfig(
 )
 
 
-class ReplicateLuigiSchedulerDatabase(luigi.ExternalTask):
+class LuigiSchedulerReplicateDatabaseToBigQuery(luigi.ExternalTask):
     """ Connect to the internal scheduler database and replicate all tables over to BigQuery. """
     def output(self):
-        return luigi.LocalTarget(f"{TMP_PATH}/{self.get_task_family()}-{NOW}.txt")
+        return luigi.LocalTarget(f"Checkpoints/{self.get_task_family()}-{NOW}.txt")
 
     def run(self):
-        self.list_tables()
+        logging.info(f"Replicating Luigi Scheduler Databse...")
         for table in ['tasks', 'task_parameters', 'task_events']:
             cursor = self.db_cursor()
             results = cursor.execute(f"SELECT * FROM {table}")
@@ -49,11 +48,6 @@ class ReplicateLuigiSchedulerDatabase(luigi.ExternalTask):
         with self.output().open('w') as checkpoint:
             checkpoint.write('SUCCESS')
 
-    def list_tables(self):
-        cursor = self.db_cursor()
-        results = cursor.execute("SELECT name FROM sqlite_master WHERE type = 'table' ;")
-        logging.info([row for row in results])
-
     @staticmethod
     def db_cursor():
         with sqlite3.connect(DB_LOC) as conn:
@@ -61,4 +55,4 @@ class ReplicateLuigiSchedulerDatabase(luigi.ExternalTask):
 
 
 if __name__ == '__main__':
-    luigi.build([ReplicateLuigiSchedulerDatabase()], local_scheduler=True)
+    luigi.build([LuigiSchedulerReplicateDatabaseToBigQuery()], local_scheduler=True)

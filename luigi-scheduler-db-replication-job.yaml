@@ -27,6 +27,6 @@ spec:
             image: us-central1-docker.pkg.dev/analytics-and-insights-311921/luigi-assets/luigi-scheduler-db-replication-job:v1.0.0
             imagePullPolicy: Always
             command: ["python3"]
-            args: ["main.py"]
+            args: ["-m", "luigi", "--module", "k8", "LuigiSchedulerTriggerDatabaseReplicationJob"]
           restartPolicy: Never
       backoffLimit: 1

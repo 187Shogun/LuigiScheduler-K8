@@ -7,27 +7,36 @@ Author: FriscianViales
 
 Encoding: utf-8
 
-Description: Trigger a python script remotely.
+Description: Trigger a python script remotely to run on a K8 Pod.
 """
 
+import logging
 import luigi
 from kubernetes import config
 from kubernetes.client.api import core_v1_api
 from kubernetes.stream import stream
+from datetime import datetime
 
 
 # File configs:
+NOW = datetime.now().strftime('%Y%m%d-%H00')
 config.load_kube_config()
+logging.basicConfig(
+    level='INFO',
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    datefmt='%m/%d/%Y %I:%M:%S %p'
+)
 
 
-class TriggerScriptRemotelyOnGKE(luigi.ExternalTask):
-    """ Do something. """
+class LuigiSchedulerTriggerDatabaseReplicationJob(luigi.ExternalTask):
+    """ Fetch a K8 cluster on GKE and trigger a Luigi task. """
     def output(self):
-        return luigi.LocalTarget(f"{self.get_task_family()}.txt")
+        return luigi.LocalTarget(f"Checkpoints/{self.get_task_family()}-{NOW}.txt")
 
     def run(self):
         response = self.exec_cmd()
-        print(response)
+        with self.output().open('w') as checkpoint:
+            checkpoint.write(response)
 
     def list_pods(self):
         return [x.metadata.name for x in self.client().list_namespaced_pod(namespace='default').items]
@@ -69,4 +78,4 @@ class TriggerScriptRemotelyOnGKE(luigi.ExternalTask):
 
 
 if __name__ == '__main__':
-    luigi.build(tasks=[TriggerScriptRemotelyOnGKE()], local_scheduler=True)
+    luigi.build(tasks=[LuigiSchedulerTriggerDatabaseReplicationJob()], local_scheduler=True)
