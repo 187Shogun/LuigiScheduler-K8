@@ -46,7 +46,6 @@ spec:
       labels:
         app: luigi-scheduler
     spec:
-      serviceAccountName: gke-worker-sa # Update if required.
       containers:
       - name: luigi-scheduler
         readinessProbe:
@@ -60,7 +59,7 @@ spec:
           limits:
             cpu: 250m
             memory: 512Mi
-        image: us-central1-docker.pkg.dev/cmg-data-hub-dev-001/luigi-scheduler-k8/luigi-scheduler:v1.0.0  # Update if required.
+        image: us-central1-docker.pkg.dev/al-data-analytics-hub-dev/luigi-scheduler/luigi-scheduler:v1.0.0  # TODO: Update accordingly to your artefact registry.
         imagePullPolicy: Always
         ports:
         - containerPort: 8082
