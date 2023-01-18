@@ -1,7 +1,7 @@
 #Define parameters:
 $PROJECT_ID="alchemialabs-dev-001"
 $K8_SA="gke-worker-sa"
-$IAM_SA="aldah-worker-dev"
+$IAM_SA="etl-worker"
 $CLUSTER_NAME="autopilot-cluster-1"
 $NAMESPACE="default"
 $REGION="us-central1"
