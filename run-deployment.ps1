@@ -1,5 +1,5 @@
 #Define parameters:
-$PROJECT_ID="cmg-data-hub-dev-001"
+$PROJECT_ID="alchemialabs-dev-001"
 $K8_SA="gke-worker-sa"
 $IAM_SA="aldah-worker-dev"
 $CLUSTER_NAME="autopilot-cluster-1"

@@ -5,7 +5,7 @@ metadata:
   labels:
     app: luigi-scheduler-frontend
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: luigi-scheduler
   ports:
